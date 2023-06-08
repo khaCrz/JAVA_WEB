@@ -1,0 +1,103 @@
+<div class="container_main clearfix">
+    <div class="body-header">Checkout</div>
+    <div class="container_left clearfix">
+        <div class="delivery_container">
+            <span class="sub_title">Delivery Options</span>
+            <div class="delivery_body">
+                <div class="delivery_select">
+                    <div id="onShip" class="delivery_select_method">
+                        <i class="fa-solid fa-truck-moving"></i>Ship
+                    </div>
+                    <div id="onPick" class="delivery_select_method">
+                        <i class="fa-solid fa-location-dot"></i>Pick Up
+                    </div>
+                </div>
+                <div class="delivery_infor">
+                    <div class="infor-title">
+                        Your Information
+                    </div>
+                    <div id="form_infor_delive" action="" class="form-delivery-infor clearfix">
+                        <input class="name-delivery" type="text" name="" id="first_name" placeholder="First name*"
+                            onclick="onChangeE(id)">
+                        <input class="name-delivery" type="text" name="" id="last_name" placeholder="Last Name*"
+                            onclick="onChangeE(id)">
+                        <input class="address-delivery" type="text" name="" id="address" placeholder="Address*"
+                            onclick="onChangeE(id)">
+                        <input class="name-delivery" type="text" name="" id="email" placeholder="Email*"
+                            onclick="onChangeE(id)">
+                        <input class="name-delivery" type="text" name="" id="phone_number" placeholder="Phone Nummber*"
+                            onclick="onChangeE(id)">
+
+                        <button class="form-save" onclick="saveFormClick()">Save</button>
+                    </div>
+
+                    <div id="infor_delive_show" class="infor-show" aria-colcount="">
+                        <div class="information">
+                            <span id="name_span">Phạm Tuấn Kha</span>
+                            <span id="address_span">K319/42 trung nu vuong</span>
+                            <span id="email_span">khapham980@gmail.com</span>
+                            <span id="phone_number_span">(849) 038-6786</span>
+                        </div>
+                        <div class="btn-edit">
+                            <button onclick="editInforClick()">Edit</button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="shipping clearfix">
+                        <div class="infor-title">Select your shipping speed</div>
+                        <div class="ship_method selected">
+                            <div>Free Ship</div>
+                            <div class="timearrive">Arrivers by Fri, Feb 10</div>
+                        </div>
+                        <div class="ship_method unselected">
+                            <div>Faster Ship</div>
+                            <div class="timearrive">Arrivers by Fri, Feb 1</div>
+                        </div>
+                        <div class="ship_method unselected">
+                            <div>Rush B</div>
+                            <div class="timearrive">Tomorrow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn_placeorder">Place Order</button>
+    </div>
+    <div class="container_right clearfix">
+        <span class="sub_title">Order Summary</span>
+        <div class="summary_total">
+            <div class="subtotal_pay clearfix">
+                <div class="order_summary infor_label clearfix">Subtotal</div>
+                <div class="order_summary value_label clearfix ">3,829,000₫₫</div>
+            </div>
+            <div class="deliver_pay clearfix">
+                <div class="infor_label order_summary">Estimated Delivery & Handling</div>
+                <div class="value_label order_summary">0₫</div>
+            </div>
+            <div class="total_payment clearfix">
+                <div class="infor_label">Total</div>
+                <div class="value_label">3,829,000₫</div>
+            </div>
+        </div>
+
+        <div class="deliver-time">Arrivers by Fri, Feb 10</div>
+        <div class="item-deviler clearfix">
+            <div class="item-deviler-img clearfix">
+                <img src="https://static.nike.com/a/images/t_PDP_144_v1/f_auto/cef6cb2b-f13b-4690-963a-828fc38eb9aa/air-jordan-1-elevate-low-shoes-XlkVrM.png"
+                    alt="">
+            </div>
+            <div class="item-deviler-infor">
+                <div class="item-deviler-infor-name">Air Jordan 1 Elevate Low</div>
+                <div class="item-deviler-infor-options">Category : Man's Shoes</div>
+                <div class="item-deviler-infor-options">Size: 41</div>
+                <div class="item-deviler-infor-options">Color: White</div>
+                <div class="item-deviler-infor-options">Qty: 1 @ 3,829,000₫</div>
+                <div class="item-deviler-infor-options">3,829,000₫</div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+.home-body {
+  margin: 0px 20px;
+}
+
+.checkbox-cus {
+  padding: 0px;
+}
+
+.infor-item {
+  padding: 0px;
+  margin-top: 15px;
+  font-size: medium;
+}
+
+.example-card {
+  margin-bottom: 10px;
+  max-height: 600px;
+  min-height: 600px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.btn-menu {
+  margin: 0px 10px;
+}

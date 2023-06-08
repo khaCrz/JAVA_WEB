@@ -1,0 +1,67 @@
+<div class="container_main clearfix" style="margin-top: 20px;">
+  <div class="container_left clearfix">
+    <div class="order_bag">
+      <span class="sub_title">Bag</span>
+      <form id="form_checkout" action="#" method="post">
+        <div class="list_orders">
+          <div class="order_item" *ngFor="let order of orders;">
+            <div class="item item_img">
+              <img [src]="order.item.imageUrl" alt="" />
+            </div>
+            <div class="item item_infor">
+              <span class="infor item_name">{{order.item.item_name}}</span>
+              <span class="infor item_category">{{order.item.type_item.type_name}}'s
+                {{order.item.category_item.name_category}}</span>
+              <span class="infor item_color">{{order.item.color}}</span>
+              <div class="infor item_choose">
+                <span class="item_size">{{order.item.size}}</span>
+                <span class="item_quantity">
+                  <form #f="ngForm" (submit)="postForm(f)">
+                    <input hidden type="text" name="id" [ngModel]="order.order_id" />
+                    Quantity <input class="quantity-order" name="value" type="number" [ngModel]="order.quantity"
+                      [min]="1" />
+                    <div class="infor sub_options">
+                      <button type="submit" style="background-color: white; border: none;"><mat-icon
+                          (click)="updateQuantity(order)">update</mat-icon></button>
+                      <mat-icon>restore_from_trash</mat-icon>
+                    </div>
+                  </form>
+                </span>
+              </div>
+            </div>
+            <div class="item item_price">
+              <div class="price">{{(order.item.price * order.quantity).toLocaleString()}}<span>₫</span></div>
+              <mat-checkbox color="primary" (click)="checkBoxClick(order.order_id)" class="check-box"></mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="favourites_item">
+      <span class="sub_title">Favourite</span>
+      <div>
+        <span class="description">There are no items saved to your favourites.</span>
+      </div>
+    </div>
+  </div>
+  <div class="container_right clearfix">
+    <span class="sub_title">Summary</span>
+    <div class="summary_total">
+      <div class="subtotal_pay clearfix">
+        <div class="infor_label clearfix">Subtotal</div>
+        <div id="sub_total" class="value_label clearfix">{{subTotal.toLocaleString()}} <span>₫</span></div>
+      </div>
+      <div class="deliver_pay clearfix">
+        <div class="infor_label">Estimated Delivery & Handling</div>
+        <div id="deliver_price" class="value_label">{{fee}} <span>₫</span></div>
+      </div>
+      <div class="total_payment clearfix">
+        <div class="infor_label">Total</div>
+        <div id="total_price" class="value_label">{{total.toLocaleString()}} <span>₫</span></div>
+      </div>
+      <button id="btn_checkout" class="checkout_btn" form="form_checkout">
+        Checkout<i class="fa-solid fa-wallet"></i>
+      </button>
+    </div>
+  </div>
+</div>

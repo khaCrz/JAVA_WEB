@@ -1,0 +1,84 @@
+<p>
+    <mat-toolbar>
+        <span>NIKEF</span>
+        <span class="example-spacer"></span>
+        <button class="btn-menu" mat-raised-button (click)="openToAdd()">
+            ADD ITEM <mat-icon>add_circle</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+<div class="row home-body">
+    <div class="col-lg-2">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button style="background-color: white;" class="accordion-button" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        <p><strong>Category</strong></p>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <mat-radio-group [(ngModel)]="selectedCateOption">
+                            <mat-radio-button value="{{cate.category_id}}" style="display: block;"
+                                *ngFor="let cate of cates">
+                                {{cate.name_category}}
+                            </mat-radio-button>
+                            <mat-radio-button value="0" style="display: block;" [checked]="true">
+                                None
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 10px;" class="accordion" id="accordionExample1">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button style="background-color: white;" class="accordion-button" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true"
+                        aria-controls="collapseOne1">
+                        <p><strong>Type</strong></p>
+                    </button>
+                </h2>
+                <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1"
+                    data-bs-parent="#accordionExample1">
+                    <div class="accordion-body">
+                        <mat-radio-group [(ngModel)]="selectedTypeOption">
+                            <mat-radio-button value="{{type.type_id}}" style="display: block;"
+                                *ngFor="let type of types">
+                                {{type.type_name}}
+                            </mat-radio-button>
+                            <mat-radio-button value="0" style="display: block;" [checked]="true">
+                                None
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button mat-raised-button (click)="onClickFilter()" style="margin-top: 20px;">Filter</button>
+    </div>
+    <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-3" *ngFor="let item of items">
+                <mat-card class="example-card" (click)="onClickCard(item.item_id)">
+                    <img mat-card-image src="{{item.imageUrl}}" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <p class="infor-item">
+                            <Strong>{{item.item_name}}</Strong>
+                        </p>
+                        <p class="infor-item">
+                            {{item.type_item.type_name}}'s {{item.category_item.name_category}}
+                        </p>
+                        <p class="infor-item">
+                            {{item.price}} ₫
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

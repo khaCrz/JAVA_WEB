@@ -1,0 +1,52 @@
+{
+  "seafoods": [
+    {
+      "id": 2,
+      "name": "Cua hoàng đế",
+      "price": 10000000,
+      "image": "https://th.bing.com/th/id/OIP.wAMGogV-sPpHjx6S8tSIogHaEK?w=311&h=180&c=7&r=0&o=5&pid=1.7",
+      "address": "Đà Nẵng",
+      "origin": "Alaska"
+    },
+    {
+      "id": 3,
+      "name": "Tôm hùm sốt trứng muối",
+      "price": 2000000,
+      "image": "https://th.bing.com/th/id/OIP.iDFGDp5jC3K_Ae4GPvCaAQHaFS?w=248&h=180&c=7&r=0&o=5&pid=1.7",
+      "address": "Đà Lạt",
+      "origin": "Việt Nam"
+    },
+    {
+      "id": 4,
+      "name": "Cua bể sốt me",
+      "price": 200000,
+      "image": "https://th.bing.com/th/id/OIP.oOlgCqOOmsFJdZvAVc3rsgHaEX?w=270&h=180&c=7&r=0&o=5&pid=1.7",
+      "address": "Đà Nẵng",
+      "origin": "Việt Nam"
+    },
+    {
+      "id": 5,
+      "name": "ốc xào xả ớt",
+      "price": 300000,
+      "image": "https://th.bing.com/th/id/OIP.0PCvvpwaGtcaBbh9VO_m0wHaE_?w=273&h=184&c=7&r=0&o=5&pid=1.7",
+      "address": "Đà Lạt",
+      "origin": "Mỹ"
+    },
+    {
+      "id": 6,
+      "name": "Hàu nướng mỡ hành",
+      "price": 100000,
+      "image": "https://th.bing.com/th/id/OIP.Sb1_xaIpnrSuP8R1JWA4yAHaD3?w=326&h=180&c=7&r=0&o=5&pid=1.7",
+      "address": "Đà Nẵng",
+      "origin": "Ấn Độ"
+    },
+    {
+      "id": 7,
+      "name": "Hôm hùm alaska",
+      "price": 4000000,
+      "image": "https://th.bing.com/th/id/OIP.NUpjUrgYHtcv_zx7NZV9SAHaFN?w=244&h=180&c=7&r=0&o=5&pid=1.7",
+      "address": "Mỹ",
+      "origin": "Việt Nam"
+    }
+  ]
+}
