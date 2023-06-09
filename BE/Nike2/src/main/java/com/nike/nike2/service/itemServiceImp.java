@@ -3,15 +3,15 @@ package com.nike.nike2.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.nike.nike2.bean.Item;
-import com.nike.nike2.repository.itemRepository;
+import com.nike.nike2.repository.ItemRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class itemServiceImp implements itemService{
+public class ItemServiceImp implements ItemService {
     @Autowired
-    private itemRepository repo;
+    private ItemRepository repo;
     @Override
     public List<Item> findAll() {
         return repo.findAll();

@@ -1,16 +1,14 @@
 package com.nike.nike2.service;
 
-import com.nike.nike2.bean.Item;
-import com.nike.nike2.bean.order;
+import com.nike.nike2.bean.Order;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface orderService {
+public interface OrderService {
 
-    public List<order> findAll();
+    public List<Order> findAll();
 
-    public order saveOrder(order o);
+    public Order saveOrder(Order o);
 
-    order findById(Integer id);
+    Order findById(Integer id);
 }

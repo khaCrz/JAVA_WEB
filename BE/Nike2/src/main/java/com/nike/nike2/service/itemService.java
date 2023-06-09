@@ -5,7 +5,7 @@ import com.nike.nike2.bean.Item;
 import java.util.List;
 import java.util.Optional;
 
-public interface itemService {
+public interface ItemService {
     public List<Item> findAll();
 
     public Item save(Item i);

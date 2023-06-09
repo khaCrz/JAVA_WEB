@@ -1,9 +1,9 @@
 package com.nike.nike2.controller;
 
-import com.nike.nike2.bean.Item;
-import com.nike.nike2.bean.order;
-import com.nike.nike2.service.itemServiceImp;
-import com.nike.nike2.service.orderServiceImp;
+import com.nike.nike2.bean.Order;
+import com.nike.nike2.bean.OrderDetail;
+import com.nike.nike2.service.ItemServiceImp;
+import com.nike.nike2.service.OrderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,44 +14,30 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping( "/api/v1/order")
-public class orderController {
+public class OrderController {
     @Autowired
-    orderServiceImp service;
+    OrderServiceImp service;
 
     @Autowired
-    private itemServiceImp ItemService;
+    private ItemServiceImp ItemService;
 
     @GetMapping("")
-    public ResponseEntity<List<order>> findAllType() {
-        return new ResponseEntity<List<order>>(service.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Order>> findAllType() {
+        return new ResponseEntity<List<Order>>(service.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<order> findOrderById(@PathVariable(value = "id") int id) {
-        return new ResponseEntity<order>(service.findById(id), HttpStatus.OK);
+    public ResponseEntity<Order> findItemById(@PathVariable(value = "id") int id) {
+        return new ResponseEntity<Order>(service.findById(id), HttpStatus.OK);
     }
 
     @PostMapping("/{id}")
-    public order saveOrUpdateOrder(@PathVariable(value = "id") int itemid) {
-        order Order = null;
-        if (service.findAll().stream().filter(o -> o.getItem().getItem_id() == itemid).count() > 0) {
-            Order = service.findById(service.findAll().stream().filter(o -> o.getItem().getItem_id() == itemid).findFirst().get().getOrder_id());
-            Order.setQuantity(Order.getQuantity() + 1);
-        } else {
-            Order = new order();
-            Order.setQuantity(1);
-            Order.setItem_id(itemid);
-            Order.setItem(ItemService.findById(itemid).get());
-        }
-        System.out.println(Order);
-        return new ResponseEntity<order>(service.saveOrder(Order), HttpStatus.OK).getBody();
+    public Order saveOrUpdateOrder(@PathVariable(value = "id") int itemid) {
+        return null;
     }
 
     @PutMapping("update")
-    public order saveOrder(@RequestParam("id") Integer id, @RequestParam("quantity") Integer quantity) {
-        order o = service.findById(id);
-        o.setQuantity(quantity);
-        System.out.println(id + "-" + quantity);
-        return new ResponseEntity<order>(service.saveOrder(o), HttpStatus.OK).getBody();
+    public OrderDetail saveOrder(@RequestParam("id") Integer id, @RequestParam("quantity") Integer quantity) {
+        return null;
     }
 }

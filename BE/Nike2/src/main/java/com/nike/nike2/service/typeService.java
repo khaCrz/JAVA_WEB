@@ -1,11 +1,10 @@
 package com.nike.nike2.service;
 
-import com.nike.nike2.bean.Item;
-import com.nike.nike2.bean.type;
+import com.nike.nike2.bean.Type;
 
 import java.util.List;
 
-public interface typeService {
+public interface TypeService {
 
-    public List<type> findAll();
+    public List<Type> findAll();
 }

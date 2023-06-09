@@ -1,7 +1,7 @@
 package com.nike.nike2.controller;
 
 
-import com.nike.nike2.service.itemServiceImp;
+import com.nike.nike2.service.ItemServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ItemController {
 
     @Autowired
-    private itemServiceImp ItemService;
+    private ItemServiceImp ItemService;
 
     @GetMapping("")
     public ResponseEntity<List<Item>> findAllItems() {
@@ -31,13 +31,13 @@ public class ItemController {
             return new ResponseEntity<List<Item>>(ItemService.findAll(), HttpStatus.OK);
         }
         if(cate != 0 && type != 0){
-            return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getType_item().getType_id() == type && i.getCategory_item().getCategory_id() == cate).toList(), HttpStatus.OK);
+            return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getType_id() == type && i.getCategoryItem().getCategoryId() == cate).toList(), HttpStatus.OK);
         }
         else {
             if (cate == 0) {
-                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getType_item().getType_id() == type).toList(), HttpStatus.OK);
+                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getType_id() == type).toList(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getCategory_item().getCategory_id() == cate).toList(), HttpStatus.OK);
+                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getCategoryItem().getCategoryId() == cate).toList(), HttpStatus.OK);
             }
         }
     }

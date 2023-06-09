@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.nike.nike2.bean.Item;
 
 @Repository
-public interface itemRepository extends JpaRepository<Item, Integer> {
+public interface ItemRepository extends JpaRepository<Item, Integer> {
 }

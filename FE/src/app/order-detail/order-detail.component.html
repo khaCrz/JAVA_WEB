@@ -2,8 +2,12 @@
   <div class="container_left clearfix">
     <div class="order_bag">
       <span class="sub_title">Bag</span>
+      <div *ngIf="orders.length < 0 ||orders == [] ||orders == null ">
+        <span class=" description">There are no items saved to your favourites.</span>
+      </div>
       <form id="form_checkout" action="#" method="post">
         <div class="list_orders">
+
           <div class="order_item" *ngFor="let order of orders;">
             <div class="item item_img">
               <img [src]="order.item.imageUrl" alt="" />

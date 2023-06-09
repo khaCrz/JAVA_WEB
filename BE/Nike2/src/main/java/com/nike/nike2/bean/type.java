@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "type")
-public class type {
+public class Type {
     @Id
     @Column(name = "type_id")
     int type_id;

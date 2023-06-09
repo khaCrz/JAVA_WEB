@@ -1,7 +1,6 @@
 package com.nike.nike2.controller;
 
 import com.nike.nike2.bean.Category;
-import com.nike.nike2.service.categoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +11,10 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping( "/api/v1/category")
-public class categoryController {
+public class CategoryController {
 
     @Autowired
-    private categoryService CategoryService;
+    private com.nike.nike2.service.CategoryService CategoryService;
 
     @GetMapping("")
     public ResponseEntity<List<Category>> findAllItems() {

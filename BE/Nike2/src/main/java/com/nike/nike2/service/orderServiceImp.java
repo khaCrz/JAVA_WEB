@@ -1,33 +1,30 @@
 package com.nike.nike2.service;
 
-import com.nike.nike2.bean.order;
-import com.nike.nike2.repository.orderRespository;
+import com.nike.nike2.bean.Order;
+import com.nike.nike2.repository.OrderRespository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class orderServiceImp implements orderService{
+public class OrderServiceImp implements OrderService {
 
     @Autowired
-    private orderRespository repo;
+    private OrderRespository repo;
 
     @Override
-    public List<order> findAll() {
+    public List<Order> findAll() {
         return repo.findAll();
     }
 
     @Override
-    public order saveOrder(order o) {
+    public Order saveOrder(Order o) {
         return repo.save(o);
     }
 
     @Override
-    public order findById(Integer id) {
+    public Order findById(Integer id) {
         return repo.findById(id).get();
     }
 }

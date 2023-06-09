@@ -14,22 +14,21 @@ import jakarta.persistence.*;
 public class Category {
     @Id
     @Column(name = "category_id")
-    int category_id ;
+    int categoryId ;
 
-    @Column(name = "name_category")
-    String name_category;
+    @Column(name = "category_name")
+    String categoryName;
 
-    public Category(int category_id, String name_category) {
-        this.category_id = category_id;
-        this.name_category = name_category;
+    public Category(int id, String name) {
+        this.categoryId = id;
+        this.categoryName = name;
     }
-
 
     @Override
     public String toString() {
-        return "category{" +
-                "category_id=" + category_id +
-                ", name_category='" + name_category + '\'' +
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
                 '}';
     }
 }
