@@ -1,9 +1,14 @@
-import { item } from "./item";
+import { item } from './item';
 
 export interface order {
-    order_id: number;
-    quantity: number;
-    item_id: number;
-    item: item;
-
+  orderId: number;
+  description: string;
+  timeOrder: string;
+  timeDelivery: string;
+  totalPayment: number;
+  status: number;
+  phone: string;
+  namReceiver: string;
+  addressReciver: string;
+  mail: string;
 }

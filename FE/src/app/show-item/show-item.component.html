@@ -1,35 +1,42 @@
-<div class="body-detail clearfix" style="margin-top: 20px;">
+<div class="body-detail clearfix" style="margin-top: 20px">
   <div class="boby-itemshow-detail clearfix">
     <div class="item-images">
       <ul class="mystyle-products">
         <li class="product-detail">
-          <img [src]="Item.imageUrl" alt="" />
+          <img src="{{ Item.imageUrl }}" alt="" />
         </li>
       </ul>
     </div>
   </div>
   <div class="body-menu-detail clearfix">
     <div class="item-detail-filter">
-      <span class="name">{{Item.item_name}}</span>
-      <span class="category">{{Item.type_item.type_name}}</span>
-      <span class="price">{{Item.price}}₫</span>
+      <span class="name">{{ Item.itemName }}</span>
+      <span class="category">{{ Item.typeItem.typeName }}</span>
+      <span class="price">{{ Item.price }}₫</span>
       <div class="size-selected">
         <div class="size-head clearfix">
           <div style="float: left; margin-left: 1%" class="clearfix">
             Select Size
           </div>
-          <div style="float: right; margin-right: 3%; color: #231e1e72" class="clearfix">
+          <div
+            style="float: right; margin-right: 3%; color: #231e1e72"
+            class="clearfix"
+          >
             Size Guide
           </div>
         </div>
         <div class="size-select-area">
-          <div class="size-select">{{Item.size}}</div>
+          <div class="size-select">{{ Item.size }}</div>
         </div>
         <div class="bag-feature clearfix">
           <button (click)="addtoCart()" class="addbag-btn clearfix">
             Add to Bag <i class="fa-solid fa-bag-shopping"></i>
           </button>
-          <button id="more" class="favourite-btn clearfix" (click)="editInformation()">
+          <button
+            id="more"
+            class="favourite-btn clearfix"
+            (click)="editInformation()"
+          >
             Edit Information <i class="fa-regular fa-pen-to-square"></i>
           </button>
         </div>
@@ -41,8 +48,12 @@
         </div>
         <div class="moreinfor">
           <ul class="infor">
-            <li>Color : {{Item.color}}</li>
-            <li>Type : {{Item.type_item.type_name}} '{{Item.category_item.name_category}}</li>
+            <li>Color : {{ Item.color }}</li>
+            <li>
+              Type : {{ Item.typeItem.typeName }} '{{
+                Item.categoryItem.categoryName
+              }}
+            </li>
           </ul>
         </div>
       </div>

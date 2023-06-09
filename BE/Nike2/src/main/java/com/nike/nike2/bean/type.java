@@ -16,16 +16,16 @@ import lombok.Setter;
 public class Type {
     @Id
     @Column(name = "type_id")
-    int type_id;
+    int typeId;
 
     @Column(name = "type_name")
-    String type_name;
+    String typeName;
 
     @Override
     public String toString() {
         return "type{" +
-                "type_id=" + type_id +
-                ", type_name='" + type_name + '\'' +
+                "type_id=" + typeId +
+                ", type_name='" + typeName + '\'' +
                 '}';
     }
 }

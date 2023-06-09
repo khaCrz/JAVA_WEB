@@ -66,8 +66,8 @@ public class Item {
                 ", price=" + price +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", discountPrice=" + discountPrice +
-                ", categoryId=" + categoryItem.getCategoryId() +
-                ", typeId=" + typeItem.getType_id() +
+//                ", categoryId=" + categoryItem.getCategoryId() +
+//                ", typeId=" + typeItem.getTypeId() +
                 '}';
     }
 }

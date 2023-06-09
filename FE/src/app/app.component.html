@@ -1,96 +1,13 @@
-<!-- <p>
-  <mat-toolbar color="primary">
-    <span>QLSF</span>
-    <span class="example-spacer"></span>
-    <button class="btn-menu" mat-raised-button (click)="openToAdd()">
-      ADD SEA FOOD
-    </button>
-    <button class="btn-menu" mat-raised-button (click)="deleteAll()">
-      DELETE ALL
-    </button>
-  </mat-toolbar>
-</p>
-
-<div class="mat-elevation-z8 main-body">
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    matSort
-    (matSortChange)="announceSortChange($event)"
-  >
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Họ và Tên</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Giá</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.price | currency : "USD" }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ảnh</th>
-      <td mat-cell *matCellDef="let element">
-        <img [src]="element.image" alt="" width="150px" height="150px" />
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Địa chỉ</th>
-      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="origin">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Xuất xứ</th>
-      <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-      <td mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="showDetail(row)">
-          <mat-icon>visibility</mat-icon>
-        </button>
-        <button mat-icon-button color="primary" (click)="openToEdit(row)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deleteData(row.id, null)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="check">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
-      <td mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="addidToRemove(row.id)"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <mat-paginator
-    [pageSizeOptions]="[2, 5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
-  </mat-paginator>
-</div> -->
-<mat-toolbar style="border-bottom: 1px solid rgba(0, 0, 0, 0.24);">
-  <a href="/" style="font-size: 40px; color: rgba(0, 0, 0, 0.818);">
-    <i class="fa-solid fa-house"></i>
+<mat-toolbar style="border-bottom: 1px solid rgba(0, 0, 0, 0.24)">
+  <a href="/" style="font-size: 40px; color: rgba(0, 0, 0, 0.818)">
+    <i class="fa-brands fa-slack fa-spin" style="color: #000000;"></i>
   </a>
   <span class="example-spacer"></span>
   <button class="btn-menu" mat-raised-button (click)="viewCart()">
-    VIEW CART<mat-icon>shopping_cart</mat-icon>
+    VIEW CART<mat-icon>add_shopping_cart</mat-icon>
+  </button>
+  <button class="btn-menu" mat-raised-button (click)="viewHistory()">
+    HISTORY CART<mat-icon>shopping_cart</mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

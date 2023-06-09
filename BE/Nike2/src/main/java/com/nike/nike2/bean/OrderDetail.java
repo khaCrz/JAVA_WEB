@@ -1,5 +1,6 @@
 package com.nike.nike2.bean;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import jakarta.persistence.*;

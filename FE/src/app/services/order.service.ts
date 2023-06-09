@@ -4,6 +4,8 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
+
+import { history } from '../models/history';
 import { catchError, throwError } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,9 +15,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-
 export class OrderService {
-
   private URL = 'http://localhost:8080';
   constructor(private httpClient: HttpClient) { }
 
@@ -42,6 +42,14 @@ export class OrderService {
       .pipe(catchError(this.handleError));
   }
 
+  public getOrderDetailCurrent() {
+    const url = this.URL + '/api/v1/orderdetail/current';
+    console.log(url);
+    return this.httpClient
+      .get<any>(url, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   public getOrdersById(id: number) {
     const url = this.URL + '/api/v1/order' + '/' + id;
     console.log(url);
@@ -51,7 +59,7 @@ export class OrderService {
   }
 
   public addOrder(emp: any) {
-    const url = this.URL + '/api/v1/order' + "/" + emp;
+    const url = this.URL + '/api/v1/order' + '/' + emp;
     console.log(emp);
     return this.httpClient
       .post<any>(url, emp, httpOptions)
@@ -60,16 +68,49 @@ export class OrderService {
 
   public editOrder(typ: any) {
     console.log(typ);
-    const url = this.URL + '/api/v1/order/update' + typ
+    const url = this.URL + '/api/v1/order/update'
     return this.httpClient
       .put<any>(url, typ, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  public deleteOrders(id: number) {
-    const url = this.URL + '/api/v1/order' + '/' + id;
+  public deleteHistory(id: number) {
+    const url = this.URL + '/api/v1/history' + '/' + id;
+    console.log(url);
     return this.httpClient
       .delete<any>(url, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public deleteOrderDetail(u: any) {
+    const url = this.URL + '/api/v1/orderdetail/delete' + u
+    console.log(url);
+    return this.httpClient
+      .delete<any>(url, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public checkout(his: history[]) {
+    const url = this.URL + '/api/v1/order' + '/checkout';
+    console.log(his);
+    return this.httpClient
+      .post<any>(url, his, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public addHistory(emp: number) {
+    const url = this.URL + '/api/v1/history' + '/' + emp;
+    console.log(emp);
+    return this.httpClient
+      .post<any>(url, emp, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getOrderDetailByOrderId(id: number) {
+    const url = this.URL + '/api/v1/orderdetail/order' + '/' + id;
+    console.log(url);
+    return this.httpClient
+      .get<any>(url, httpOptions)
       .pipe(catchError(this.handleError));
   }
 }

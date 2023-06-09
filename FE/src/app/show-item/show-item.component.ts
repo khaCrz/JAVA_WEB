@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import { ItemService } from '../services/item.service';
 import { item } from '../models/item';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { order } from '../models/order';
 import { OrderService } from '../services/order.service';
 
@@ -15,37 +15,41 @@ import { OrderService } from '../services/order.service';
 export class ShowItemComponent implements OnInit {
   Item!: item;
   id!: string;
-  Order!: order
-  constructor(private dialog: MatDialog, private Iservice: ItemService, private Oservice: OrderService, private activateRouter: ActivatedRoute) {
-  }
+  Order!: order;
+  constructor(
+    private dialog: MatDialog,
+    private Iservice: ItemService,
+    private Oservice: OrderService,
+    private activateRouter: ActivatedRoute,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.activateRouter.paramMap.subscribe((data) => {
       let id: any = data.get('id');
-      this.id = id
+      this.id = id;
       if (id)
         this.Iservice.getItemsById(id).subscribe((data) => {
-          this.Item = data
-          console.log(this.Item)
-        })
-    })
+          this.Item = data;
+          console.log(this.Item);
+        });
+    });
   }
 
   addtoCart() {
-    this.Oservice.addOrder(this.Item.item_id).subscribe(data => {
-      console.log(data)
-    })
+    this.Oservice.addHistory(this.Item.itemId).subscribe((data) => {
+      alert('Add Success !!!');
+      this.route.navigateByUrl('/orderDetail');
+    });
   }
 
-
   editInformation() {
-    const dilogRef = this.dialog
+    const dilogRef = this.dialog;
     dilogRef.open(AddEditComponent, { data: this.Item });
-    dilogRef.afterAllClosed.subscribe(data => {
+    dilogRef.afterAllClosed.subscribe((data) => {
       this.Iservice.getItemsById(this.id).subscribe((data) => {
-        this.Item = data
-      })
-    })
-
+        this.Item = data;
+      });
+    });
   }
 }

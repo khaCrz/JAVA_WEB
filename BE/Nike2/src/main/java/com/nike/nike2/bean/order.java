@@ -37,6 +37,7 @@ public class Order {
     @Column(name = "mail")
     String mail;
 
+
     public Order(int orderId, String description, String timeOrder, String timeDelivery, double totalPayment, int status, String phone, String nameReceiver, String addressReciver, String mail) {
         this.orderId = orderId;
         this.description = description;

@@ -17,4 +17,19 @@ public class OrderDetailServiceImp implements OrderDetailService {
     public List<OrderDetail> getOrderDetailsByOrderId(int orderId) {
         return repo.getOrderDetailsByOrderId(orderId);
     }
+
+    @Override
+    public OrderDetail save(OrderDetail od) {
+        return repo.save(od);
+    }
+
+    @Override
+    public List<OrderDetail> findAll() {
+        return repo.findAll();
+    }
+
+    @Override
+    public void delete(OrderDetail od) {
+        repo.delete(od);
+    }
 }

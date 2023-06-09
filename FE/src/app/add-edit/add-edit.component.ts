@@ -31,15 +31,15 @@ export class AddEditComponent {
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.sfForm = fb.group({
-      item_id: [''],
-      item_name: [''],
+      itemId: [''],
+      itemName: [''],
       color: [''],
       size: [''],
       price: [''],
       imageUrl: [''],
-      discount_price: [''],
-      category_item: [''],
-      type_item: [''],
+      discountPrice: [''],
+      categoryItem: [''],
+      typeItem: [''],
     });
   }
 
@@ -49,16 +49,16 @@ export class AddEditComponent {
   }
 
   ngOnInit(): void {
-    this.cateService.getCategorys().subscribe(data => {
+    this.cateService.getCategorys().subscribe((data) => {
       this.cates = data;
     });
-    this.typeService.getTypes().subscribe(data => {
+    this.typeService.getTypes().subscribe((data) => {
       this.types = data;
-
     });
 
     if (this.data != null) {
       this.sfForm.patchValue(this.data);
+      console.log(this.data);
       this.addOrEdit = this.EDIT;
     } else {
       this.addOrEdit = this.ADD;

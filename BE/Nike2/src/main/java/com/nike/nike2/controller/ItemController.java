@@ -31,11 +31,11 @@ public class ItemController {
             return new ResponseEntity<List<Item>>(ItemService.findAll(), HttpStatus.OK);
         }
         if(cate != 0 && type != 0){
-            return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getType_id() == type && i.getCategoryItem().getCategoryId() == cate).toList(), HttpStatus.OK);
+            return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getTypeId() == type && i.getCategoryItem().getCategoryId() == cate).toList(), HttpStatus.OK);
         }
         else {
             if (cate == 0) {
-                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getType_id() == type).toList(), HttpStatus.OK);
+                return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getTypeItem().getTypeId() == type).toList(), HttpStatus.OK);
             } else {
                 return new ResponseEntity<List<Item>>(ItemService.findAll().stream().filter(i -> i.getCategoryItem().getCategoryId() == cate).toList(), HttpStatus.OK);
             }
@@ -48,13 +48,13 @@ public class ItemController {
     }
 
     @PostMapping("")
-    public Item saveItem(@Validated @RequestBody Item i) {
+    public Item saveItem(@RequestBody Item i) {
         System.out.println(i);
         return ItemService.save(i);
     }
 
     @PutMapping("")
-    public Item updateItem(@Validated @RequestBody Item i) {
+    public Item updateItem(@RequestBody Item i) {
         System.out.println(i);
         return ItemService.save(i);
     }

@@ -9,13 +9,13 @@
     <div class="row" hidden>
       <mat-form-field appearance="outline" class="invisible">
         <mat-label>id</mat-label>
-        <input matInput type="number" formControlName="item_id" />
+        <input matInput type="number" formControlName="itemId" />
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Name Item</mat-label>
-        <input matInput formControlName="item_name" />
+        <input matInput formControlName="itemName" />
       </mat-form-field>
     </div>
     <div class="row">
@@ -33,7 +33,7 @@
         <input
           type="number"
           matInput
-          formControlName="discount_price"
+          formControlName="discountPrice"
           [disabled]="true"
         />
         <mat-error *ngIf="sfForm.controls['price'].errors ? true : false">
@@ -76,11 +76,11 @@
         <mat-label>Category</mat-label>
         <mat-select
           [compareWith]="compareFn"
-          formControlName="category_item"
+          formControlName="categoryItem"
           aria-label="Default select example"
         >
           <mat-option *ngFor="let cate of cates" [value]="cate">{{
-            cate.name_category
+            cate.categoryName
           }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -90,11 +90,11 @@
         <mat-label>Type</mat-label>
         <mat-select
           [compareWith]="compareFn"
-          formControlName="type_item"
+          formControlName="typeItem"
           aria-label="Default select example"
         >
           <mat-option *ngFor="let type of types" [value]="type">{{
-            type.type_name
+            type.typeName
           }}</mat-option>
         </mat-select>
       </mat-form-field>

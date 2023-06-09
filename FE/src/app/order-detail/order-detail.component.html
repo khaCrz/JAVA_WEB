@@ -1,51 +1,110 @@
-<div class="container_main clearfix" style="margin-top: 20px;">
+<div class="container_main clearfix" style="margin-top: 20px">
   <div class="container_left clearfix">
     <div class="order_bag">
       <span class="sub_title">Bag</span>
-      <div *ngIf="orders.length < 0 ||orders == [] ||orders == null ">
-        <span class=" description">There are no items saved to your favourites.</span>
-      </div>
-      <form id="form_checkout" action="#" method="post">
-        <div class="list_orders">
-
-          <div class="order_item" *ngFor="let order of orders;">
-            <div class="item item_img">
-              <img [src]="order.item.imageUrl" alt="" />
-            </div>
-            <div class="item item_infor">
-              <span class="infor item_name">{{order.item.item_name}}</span>
-              <span class="infor item_category">{{order.item.type_item.type_name}}'s
-                {{order.item.category_item.name_category}}</span>
-              <span class="infor item_color">{{order.item.color}}</span>
-              <div class="infor item_choose">
-                <span class="item_size">{{order.item.size}}</span>
-                <span class="item_quantity">
-                  <form #f="ngForm" (submit)="postForm(f)">
-                    <input hidden type="text" name="id" [ngModel]="order.order_id" />
-                    Quantity <input class="quantity-order" name="value" type="number" [ngModel]="order.quantity"
-                      [min]="1" />
-                    <div class="infor sub_options">
-                      <button type="submit" style="background-color: white; border: none;"><mat-icon
-                          (click)="updateQuantity(order)">update</mat-icon></button>
-                      <mat-icon>restore_from_trash</mat-icon>
-                    </div>
-                  </form>
-                </span>
+      <ng-container *ngIf="histories== null || histories.length == 0; else elseTemplate">
+        <div style="height: 50px">
+          <span class="description">There are no items saved to your history.</span>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <form id="form_checkout" action="#" method="post">
+          <div class="list_orders">
+            <div class="order_item" *ngFor="let history of histories">
+              <div class="item item_img">
+                <img [src]="history.item.imageUrl" alt="" />
+              </div>
+              <div class="item item_infor">
+                <span class="infor item_name">{{ history.item.itemName }}</span>
+                <span class="infor item_category">{{ history.item.typeItem.typeName }}'s
+                  {{ history.item.categoryItem.categoryName }}</span>
+                <span class="infor item_color">{{ history.item.color }}</span>
+                <div class="infor item_choose">
+                  <span class="item_size">{{ history.item.size }}</span>
+                  <span class="item_quantity">
+                    <form #f="ngForm" (submit)="postForm(f)">
+                      <input hidden type="text" name="id" [ngModel]="history.historyId" />
+                      Quantity
+                      <input class="quantity-order" name="value" type="number" [ngModel]="history.quantity" [min]="1" />
+                      <div class="infor sub_options">
+                        <button type="submit" style="background-color: white; border: none">
+                          <mat-icon>update</mat-icon>
+                        </button>
+                        <button style="background-color: white; border: none" (click)="delete(history.historyId)">
+                          <mat-icon>remove_shopping_cart</mat-icon>
+                        </button>
+                      </div>
+                    </form>
+                  </span>
+                </div>
+              </div>
+              <div class="item item_price">
+                <div class="price">
+                  {{ (history.item.price * history.quantity).toLocaleString()
+                  }}<span>₫</span>
+                </div>
+                <mat-checkbox color="primary" (click)="checkBoxClick(history.historyId)"
+                  class="check-box"></mat-checkbox>
               </div>
             </div>
-            <div class="item item_price">
-              <div class="price">{{(order.item.price * order.quantity).toLocaleString()}}<span>₫</span></div>
-              <mat-checkbox color="primary" (click)="checkBoxClick(order.order_id)" class="check-box"></mat-checkbox>
+          </div>
+        </form>
+      </ng-template>
+    </div>
+    <div class="order_detail">
+      <span class="sub_title">Current In Bag</span>
+      <ng-container *ngIf="OrderDetails == null || OrderDetails.length == 0; else elseTemplate2">
+        <div style="height: 50px">
+          <span class="description">There are no items saved to your bag.</span>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate2>
+        <form id="form_checkout" action="#" method="post">
+          <div class="list_orders">
+            <div class="order_item" *ngFor="let orderDetail of OrderDetails">
+              <div class="item item_img">
+                <img [src]="orderDetail.item.imageUrl" alt="" />
+              </div>
+              <div class="item item_infor">
+                <span class="infor item_name">{{
+                  orderDetail.item.itemName
+                  }}</span>
+                <span class="infor item_category">{{ orderDetail.item.typeItem.typeName }}'s
+                  {{ orderDetail.item.categoryItem.categoryName }}</span>
+                <span class="infor item_color">{{
+                  orderDetail.item.color
+                  }}</span>
+                <div class="infor item_choose">
+                  <span class="item_size">{{ orderDetail.item.size }}</span>
+                  <span class="item_quantity">
+                    <input hidden type="text" name="id" />
+                    Quantity
+                    <input class="quantity-order" name="value" type="number" readonly value="{{ orderDetail.quantity }}"
+                      [min]="1" />
+                    <div class="infor sub_options">
+                      <mat-icon readonly>update</mat-icon>
+
+                      <button style="background-color: white; border: none" (click)="deleteOd(orderDetail)">
+                        <mat-icon>remove_shopping_cart</mat-icon>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div class="item item_price">
+                <div class="price">
+                  {{
+                  (
+                  orderDetail.item.price * orderDetail.quantity
+                  ).toLocaleString()
+                  }}<span>₫</span>
+                </div>
+                <mat-checkbox color="primary" [checked]="true" class="check-box" [disabled]="true"></mat-checkbox>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
-    </div>
-    <div class="favourites_item">
-      <span class="sub_title">Favourite</span>
-      <div>
-        <span class="description">There are no items saved to your favourites.</span>
-      </div>
+        </form>
+      </ng-template>
     </div>
   </div>
   <div class="container_right clearfix">
@@ -53,17 +112,23 @@
     <div class="summary_total">
       <div class="subtotal_pay clearfix">
         <div class="infor_label clearfix">Subtotal</div>
-        <div id="sub_total" class="value_label clearfix">{{subTotal.toLocaleString()}} <span>₫</span></div>
+        <div id="sub_total" class="value_label clearfix">
+          {{ subTotal.toLocaleString() }} <span>₫</span>
+        </div>
       </div>
       <div class="deliver_pay clearfix">
         <div class="infor_label">Estimated Delivery & Handling</div>
-        <div id="deliver_price" class="value_label">{{fee}} <span>₫</span></div>
+        <div id="deliver_price" class="value_label">
+          {{ fee }} <span>₫</span>
+        </div>
       </div>
       <div class="total_payment clearfix">
         <div class="infor_label">Total</div>
-        <div id="total_price" class="value_label">{{total.toLocaleString()}} <span>₫</span></div>
+        <div id="total_price" class="value_label">
+          {{ total.toLocaleString() }} <span>₫</span>
+        </div>
       </div>
-      <button id="btn_checkout" class="checkout_btn" form="form_checkout">
+      <button (click)="checkOut()" id="btn_checkout" class="checkout_btn" form="form_checkout">
         Checkout<i class="fa-solid fa-wallet"></i>
       </button>
     </div>
